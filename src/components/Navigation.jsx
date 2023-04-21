@@ -1,6 +1,7 @@
 import { Container, Navbar, Nav, Form, FormControl, Button } from "solid-bootstrap";
 import { A } from "@solidjs/router";
 import { createSignal } from "solid-js";
+import { favRepos } from "../App";
 
 function Navigation({onPressSearch}) {
 
@@ -23,7 +24,7 @@ function Navigation({onPressSearch}) {
               navbarScroll
             >
               <A href="/" end class="btn btn-primary me-2" activeClass="btn-success">Home</A>
-              <A href="/favrepos" class="btn btn-primary me-2" activeClass="btn-success">Saved ~ 5</A>
+              <A href="/favrepos" class="btn btn-primary me-2" activeClass="btn-success">Saved ~ {favRepos().length}</A>
             </Nav>
             <Form class="d-flex">
               <FormControl

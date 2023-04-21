@@ -9,6 +9,7 @@ const Navigation = lazy(() => import("./components/Navigation"));
 const [username, setUserName] = createSignal('theDevSoham');
 const [repos, setRepos] = createSignal([]);
 const [isLoading, setIsLoading] = createSignal(false);
+const [favRepos, setFavRepos] = createSignal([]);
 
 function App() {
 
@@ -41,5 +42,5 @@ function App() {
   );
 }
 
-export { repos, username, isLoading }
+export { repos, username, isLoading, favRepos, setFavRepos }
 export default App;
