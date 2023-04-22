@@ -7,18 +7,16 @@ function SavedRepos() {
 
   const [saved, setSaved] = createSignal([]);
 
-  const flatten = (arr) => {
-    return arr.reduce(
-      (flat, toFlatten) =>
-        flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten),
-      []
-    );
-  };
+  // const flatten = (arr) => {
+  //   return arr.reduce(
+  //     (flat, toFlatten) =>
+  //       flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten),
+  //     []
+  //   );
+  // };
 
   createEffect(() => {
-    setSaved(flatten(repos()).filter(repo => {
-      return favRepos().includes(repo.id);
-    }));
+    setSaved(favRepos());
   });
 
   return (

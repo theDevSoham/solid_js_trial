@@ -4,10 +4,10 @@ import { favRepos, setFavRepos } from "../App";
 function RepoCard({repo}) {
 
   const saveRepo = () => {
-    if(favRepos().includes(repo.id)) {
-      setFavRepos(favRepos().filter((id) => id !== repo.id));
+    if(favRepos().some(item => item.id === repo.id)) {
+      setFavRepos(favRepos().filter((item) => item.id !== repo.id));
     }else{
-      const newFavRepos = [...favRepos(), repo.id];
+      const newFavRepos = [...favRepos(), repo];
       setFavRepos(newFavRepos);
     };
   };
@@ -23,7 +23,7 @@ function RepoCard({repo}) {
           <Card.Text>
             {typeof repo.description === "string" ? repo?.description : "No description provided"}
           </Card.Text>
-          {favRepos().includes(repo.id) ? 
+          {favRepos().some(item => item.id === repo.id) ? 
             <Button variant="danger" onClick={saveRepo}>Unsave</Button>
             :<Button variant="success" onClick={saveRepo}>Save</Button>
           }
